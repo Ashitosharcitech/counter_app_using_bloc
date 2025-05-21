@@ -1,4 +1,5 @@
 import 'package:counter_app_using_bloc/bloc/counter/counter_bloc.dart';
+import 'package:counter_app_using_bloc/bloc/counter/counter_events.dart';
 import 'package:counter_app_using_bloc/bloc/counter/counter_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,9 +32,16 @@ class _CounterScreenState extends State<CounterScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: (){}, child: Text('Increment')),
+              ElevatedButton(onPressed: (){
+                context.read<CounterBloc>().add(IncrementCounter());
+              }, child: Text('Increment')),
               const SizedBox(width: 20,),
-              ElevatedButton(onPressed: (){}, child: Text('Decrement'))
+              ElevatedButton(onPressed: (){
+                context.read<CounterBloc>().add(DecrementCounter());
+                if(DecrementCounter != 0){
+
+                }
+              }, child: Text('Decrement'))
             ],
           )
         ],
